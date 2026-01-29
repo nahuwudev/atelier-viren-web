@@ -2,15 +2,13 @@
 # Solución para error de @rollup/rollup-linux-x64-gnu
 
 [build]
-  # Usar npm install en vez de bun para asegurar todas las plataformas
-  command = "npm install && npm run build"
+  # Instalación limpia + Rollup Linux explícito
+  command = "rm -rf node_modules package-lock.json && npm install && npm install @rollup/rollup-linux-x64-gnu --save-optional && npm run build"
   publish = "dist"
 
 [build.environment]
   # Versión de Node (compatible con Astro 5)
   NODE_VERSION = "20"
-  # Forzar instalación de optional dependencies
-  NPM_FLAGS = "--legacy-peer-deps"
 
 # Headers para optimización
 [[headers]]
