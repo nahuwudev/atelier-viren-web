@@ -1,0 +1,159 @@
+---
+/**
+ * MemoriaDescriptiva — Documentación técnica institucional
+ * Tono museístico/académico, no comercial
+ */
+
+interface Props {
+  contextoHistorico: string[];
+  diagnostico: string[];
+  criteriosIntervencion: string[];
+  intervencionesRealizadas: string[];
+  resultado: string[];
+}
+
+const {
+  contextoHistorico,
+  diagnostico,
+  criteriosIntervencion,
+  intervencionesRealizadas,
+  resultado,
+} = Astro.props;
+---
+
+<section class="memoria-descriptiva section-spacing">
+  <div class="container-archon">
+    <h2 class="section-title font-serif">Memoria Descriptiva</h2>
+
+    <div class="memoria-content">
+      <!-- 1. Contexto Histórico -->
+      <article class="memoria-section">
+        <h3 class="subsection-title font-sans">Contexto Histórico</h3>
+        <div class="text-content">
+          {
+            contextoHistorico.map((paragraph) => (
+              <p class="font-serif text-max">{paragraph}</p>
+            ))
+          }
+        </div>
+      </article>
+
+      <!-- 2. Diagnóstico -->
+      <article class="memoria-section">
+        <h3 class="subsection-title font-sans">Diagnóstico</h3>
+        <div class="text-content">
+          {
+            diagnostico.map((paragraph) => (
+              <p class="font-serif text-max">{paragraph}</p>
+            ))
+          }
+        </div>
+      </article>
+
+      <!-- 3. Criterios de Intervención -->
+      <article class="memoria-section">
+        <h3 class="subsection-title font-sans">Criterios de Intervención</h3>
+        <div class="text-content">
+          {
+            criteriosIntervencion.map((paragraph) => (
+              <p class="font-serif text-max">{paragraph}</p>
+            ))
+          }
+        </div>
+      </article>
+
+      <!-- 4. Intervenciones Realizadas -->
+      <article class="memoria-section">
+        <h3 class="subsection-title font-sans">Intervenciones Realizadas</h3>
+        <div class="text-content">
+          {
+            intervencionesRealizadas.map((paragraph) => (
+              <p class="font-serif text-max">{paragraph}</p>
+            ))
+          }
+        </div>
+      </article>
+
+      <!-- 5. Resultado -->
+      <article class="memoria-section">
+        <h3 class="subsection-title font-sans">Resultado</h3>
+        <div class="text-content">
+          {
+            resultado.map((paragraph) => (
+              <p class="font-serif text-max">{paragraph}</p>
+            ))
+          }
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .memoria-descriptiva {
+    background-color: var(--color-background);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-foreground);
+    margin-bottom: var(--spacing-2xl);
+    letter-spacing: -0.01em;
+  }
+
+  .memoria-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+  }
+
+  /* Memoria Section */
+  .memoria-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .memoria-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .subsection-title {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-foreground);
+    letter-spacing: -0.005em;
+  }
+
+  /* Text Content */
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .text-content p {
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    line-height: 1.8;
+    color: var(--color-foreground);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .section-title {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .memoria-content {
+      gap: var(--spacing-2xl);
+    }
+
+    .memoria-section {
+      padding-bottom: var(--spacing-lg);
+    }
+  }
+</style>

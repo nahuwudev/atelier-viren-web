@@ -1,0 +1,207 @@
+---
+/**
+ * TechnicalData — Ficha técnica del proyecto
+ * Grid 2 columnas: datos del edificio + datos de intervención
+ */
+
+interface BuildingData {
+  constructionYear: string;
+  originalArchitect?: string;
+  architecturalStyle: string;
+  totalArea: string;
+  previousState: string;
+}
+
+interface InterventionData {
+  restorationYear: string;
+  projectDuration: string;
+  atelierTeam: string;
+  appliedTechniques: string[];
+  currentState: string;
+}
+
+interface Props {
+  building: BuildingData;
+  intervention: InterventionData;
+}
+
+const { building, intervention } = Astro.props;
+---
+
+<section class="technical-data section-spacing">
+  <div class="container-archon">
+    <h2 class="section-title font-serif">Ficha Técnica</h2>
+
+    <div class="data-grid">
+      <!-- Columna 1: Datos del Edificio -->
+      <div class="data-column">
+        <h3 class="column-title font-sans">Datos del Edificio</h3>
+
+        <dl class="data-list">
+          <div class="data-item">
+            <dt class="data-label font-mono">AÑO DE CONSTRUCCIÓN</dt>
+            <dd class="data-value font-mono">{building.constructionYear}</dd>
+          </div>
+
+          {
+            building.originalArchitect && (
+              <div class="data-item">
+                <dt class="data-label font-mono">ARQUITECTO ORIGINAL</dt>
+                <dd class="data-value font-mono">
+                  {building.originalArchitect}
+                </dd>
+              </div>
+            )
+          }
+
+          <div class="data-item">
+            <dt class="data-label font-mono">ESTILO ARQUITECTÓNICO</dt>
+            <dd class="data-value font-mono">{building.architecturalStyle}</dd>
+          </div>
+
+          <div class="data-item">
+            <dt class="data-label font-mono">SUPERFICIE TOTAL</dt>
+            <dd class="data-value font-mono">{building.totalArea}</dd>
+          </div>
+
+          <div class="data-item">
+            <dt class="data-label font-mono">ESTADO PREVIO</dt>
+            <dd class="data-value font-mono">{building.previousState}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Columna 2: Datos de Intervención -->
+      <div class="data-column">
+        <h3 class="column-title font-sans">Datos de Intervención</h3>
+
+        <dl class="data-list">
+          <div class="data-item">
+            <dt class="data-label font-mono">AÑO DE RESTAURACIÓN</dt>
+            <dd class="data-value font-mono">{intervention.restorationYear}</dd>
+          </div>
+
+          <div class="data-item">
+            <dt class="data-label font-mono">DURACIÓN DE OBRA</dt>
+            <dd class="data-value font-mono">{intervention.projectDuration}</dd>
+          </div>
+
+          <div class="data-item">
+            <dt class="data-label font-mono">EQUIPO ATELIER VIREN</dt>
+            <dd class="data-value font-mono">{intervention.atelierTeam}</dd>
+          </div>
+
+          <div class="data-item">
+            <dt class="data-label font-mono">TÉCNICAS APLICADAS</dt>
+            <dd class="data-value font-mono">
+              {
+                intervention.appliedTechniques.map((technique, index) => (
+                  <span>
+                    {technique}
+                    {index < intervention.appliedTechniques.length - 1 && (
+                      <br />
+                    )}
+                  </span>
+                ))
+              }
+            </dd>
+          </div>
+
+          <div class="data-item">
+            <dt class="data-label font-mono">ESTADO ACTUAL</dt>
+            <dd class="data-value font-mono">{intervention.currentState}</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .technical-data {
+    background-color: var(--color-background);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-foreground);
+    margin-bottom: var(--spacing-2xl);
+    letter-spacing: -0.01em;
+  }
+
+  /* Data Grid */
+  .data-grid {
+    display: grid;
+    gap: var(--spacing-3xl);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-2xl);
+  }
+
+  @media (min-width: 768px) {
+    .data-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Data Column */
+  .data-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .column-title {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-foreground);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  /* Data List */
+  .data-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin: 0;
+  }
+
+  .data-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .data-item:last-child {
+    border-bottom: none;
+  }
+
+  .data-label {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin: 0;
+  }
+
+  .data-value {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-foreground);
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .section-title {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .data-grid {
+      gap: var(--spacing-2xl);
+      padding-top: var(--spacing-xl);
+    }
+  }
+</style>

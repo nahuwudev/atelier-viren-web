@@ -1,0 +1,41 @@
+---
+import "@/styles/global.css";
+import Footer from "@/components/Footer.astro";
+import DesignSystemBadge from "@/components/DesignSystemBadge.astro";
+import SmoothScroll from "@/components/SmoothScroll.astro";
+import SideNav from "@/components/SideNav.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "ARCHÓN — Arquitectura Digital",
+  description = "Estructuras digitales coherentes, sólidas y atemporales",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <SmoothScroll />
+    <SideNav />
+    <slot />
+    <Footer />
+    <DesignSystemBadge />
+  </body>
+</html>

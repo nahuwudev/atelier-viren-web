@@ -1,0 +1,205 @@
+---
+/**
+ * About — Identidad del Estudio
+ *
+ * Grid 2 columnas: texto institucional + metadata técnica.
+ * Tono académico, sin marketing.
+ */
+---
+
+<section id="sobre-nosotros" class="about-section section-spacing">
+  <div class="container-archon">
+    <!-- Título de Sección -->
+    <h2 class="section-title">Sobre el Estudio</h2>
+
+    <!-- Grid Editorial: Texto + Metadata -->
+    <div class="about-grid">
+      <!-- Columna 1: Texto Institucional -->
+      <div class="about-text">
+        <p class="font-serif text-large">
+          ATELIER VIREN surge de la convicción de que el patrimonio
+          arquitectónico no es un objeto museístico estático, sino un organismo
+          vivo que requiere intervención crítica y contemporánea.
+        </p>
+
+        <p class="font-serif">
+          Nuestro enfoque combina análisis histórico riguroso con técnicas de
+          restauración que respetan la autenticidad material del edificio
+          original. No buscamos "devolver" el edificio a un estado idealizado
+          del pasado, sino garantizar su permanencia física y conceptual para
+          las generaciones futuras.
+        </p>
+
+        <p class="font-serif">
+          Cada intervención es un acto de interpretación arquitectónica donde
+          documentación exhaustiva, criterio técnico y sensibilidad histórica
+          convergen en soluciones específicas para cada proyecto.
+        </p>
+      </div>
+
+      <!-- Columna 2: Metadata -->
+      <div class="about-metadata">
+        <div class="metadata-block">
+          <span class="metadata-label">FUNDACIÓN</span>
+          <span class="metadata-value">2018</span>
+        </div>
+
+        <div class="metadata-block">
+          <span class="metadata-label">UBICACIÓN</span>
+          <span class="metadata-value">Buenos Aires, Argentina</span>
+        </div>
+
+        <div class="metadata-block">
+          <span class="metadata-label">ESPECIALIZACIÓN</span>
+          <span class="metadata-value">
+            Patrimonio Colonial<br />
+            y Republicano
+          </span>
+        </div>
+
+        <div class="metadata-block">
+          <span class="metadata-label">PROYECTOS COMPLETADOS</span>
+          <span class="metadata-value">28</span>
+        </div>
+
+        <div class="metadata-block">
+          <span class="metadata-label">AÑOS DE EXPERIENCIA</span>
+          <span class="metadata-value">6+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    background-color: var(--color-background);
+  }
+
+  .section-title {
+    font-family: var(--font-family-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-foreground);
+    margin-bottom: var(--spacing-2xl);
+    letter-spacing: -0.01em;
+  }
+
+  /* Grid Editorial */
+  .about-grid {
+    display: grid;
+    gap: var(--spacing-3xl);
+  }
+
+  @media (min-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1.5fr 1fr;
+      gap: var(--spacing-3xl);
+    }
+  }
+
+  /* Columna Texto */
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .about-text p {
+    line-height: 1.7;
+    color: var(--color-foreground);
+  }
+
+  .text-large {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-weight: var(--font-weight-normal);
+  }
+
+  /* Columna Metadata */
+  .about-metadata {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    border-left: 1px solid var(--color-border);
+    padding-left: var(--spacing-lg);
+  }
+
+  .metadata-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .metadata-label {
+    font-family: var(--font-family-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .metadata-value {
+    font-family: var(--font-family-mono);
+    font-size: 0.875rem;
+    color: var(--color-foreground);
+    line-height: 1.5;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .section-title {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .about-metadata {
+      border-left: none;
+      border-top: 1px solid var(--color-border);
+      padding-left: 0;
+      padding-top: var(--spacing-lg);
+      gap: var(--spacing-md);
+    }
+  }
+
+  /* Animations on scroll (optional enhancement) */
+  @media (prefers-reduced-motion: no-preference) {
+    .about-text p {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fade-in-up var(--duration-slow) var(--ease-smooth) forwards;
+    }
+
+    .about-text p:nth-child(1) {
+      animation-delay: 100ms;
+    }
+
+    .about-text p:nth-child(2) {
+      animation-delay: 200ms;
+    }
+
+    .about-text p:nth-child(3) {
+      animation-delay: 300ms;
+    }
+
+    .metadata-block {
+      opacity: 0;
+      transform: translateX(-8px);
+      animation: slide-in-right var(--duration-base) var(--ease-smooth) forwards;
+    }
+
+    .metadata-block:nth-child(1) {
+      animation-delay: 150ms;
+    }
+    .metadata-block:nth-child(2) {
+      animation-delay: 250ms;
+    }
+    .metadata-block:nth-child(3) {
+      animation-delay: 350ms;
+    }
+    .metadata-block:nth-child(4) {
+      animation-delay: 450ms;
+    }
+    .metadata-block:nth-child(5) {
+      animation-delay: 550ms;
+    }
+  }
+</style>

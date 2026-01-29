@@ -1,0 +1,124 @@
+---
+/**
+ * Casa Colonial Álvarez (1720 / 2023)
+ * Página de detalle completa con documentación museística
+ */
+
+import Layout from "@/layouts/Layout.astro";
+import ProjectHero from "@/modules/proyecto/ProjectHero.astro";
+import TechnicalData from "@/modules/proyecto/TechnicalData.astro";
+import MemoriaDescriptiva from "@/modules/proyecto/MemoriaDescriptiva.astro";
+import ProjectGallery from "@/modules/proyecto/ProjectGallery.astro";
+import ProjectNavigation from "@/modules/proyecto/ProjectNavigation.astro";
+
+// Datos del proyecto
+const projectData = {
+  name: "Casa Colonial Álvarez",
+  constructionYear: "1720",
+  restorationYear: "2023",
+  location: "Buenos Aires, Argentina",
+  typology: "Casa Colonial",
+  heroImage: "/images/casa-colonial/01.png",
+};
+
+// Ficha Técnica
+const buildingData = {
+  constructionYear: "1720",
+  originalArchitect: "Alarife Colonial / Anónimo",
+  architecturalStyle: "Colonial Español Rioplatense",
+  totalArea: "420 m²",
+  previousState: "Deterioro general, pérdida de elementos originales",
+};
+
+const interventionData = {
+  restorationYear: "2022–2023",
+  projectDuration: "14 meses",
+  atelierTeam: "6 profesionales especializados",
+  appliedTechniques: [
+    "Restauración de carpintería colonial",
+    "Consolidación de muros de tapia",
+    "Recuperación de pisos de ladrillo",
+    "Integración de sistemas ocultos",
+  ],
+  currentState: "Uso residencial privado",
+};
+
+// Memoria Descriptiva
+const memoria = {
+  contextoHistorico: [
+    "La Casa Álvarez fue construida en 1720 como residencia urbana de una familia de comerciantes durante el período colonial tardío en Buenos Aires. Representa uno de los escasos ejemplares de arquitectura doméstica colonial que sobreviven en la ciudad, testimonio material de la vida cotidiana en el virreinato del Río de la Plata.",
+    "La casa se organiza según el esquema tradicional hispanoamericano: fachada a la calle con balcones volados, zaguán de acceso y patio interior rodeado de galería. Esta tipología fue el modelo dominante de la arquitectura residencial porteña hasta mediados del siglo XIX, aunque muy pocas casas de este período han llegado hasta nuestros días.",
+  ],
+  diagnostico: [
+    "Al comenzar nuestra intervención en 2022, la casa presentaba un estado de conservación delicado producto de múltiples intervenciones inadecuadas realizadas durante el siglo XX. Los balcones de madera originales mostraban deterioro estructural severo, con pérdida de balaustres y degradación por xilófagos.",
+    "Los muros de tapia (tierra compactada) habían sufrido pérdidas de material por humedad ascendente y falta de mantenimiento. El piso original de ladrillo cocido estaba oculto bajo capas de cemento aplicadas en los años 1960. La galería del patio había perdido varios de sus postes de madera y las vigas del techo presentaban deformaciones preocupantes.",
+  ],
+  criteriosIntervencion: [
+    "Nuestra aproximación se basó en el principio de autenticidad material y legibilidad histórica. Cada elemento original identificado fue conservado y restaurado in situ, evitando reemplazos innecesarios. Las intervenciones necesarias se realizaron con materiales compatibles y técnicas tradicionales documentadas del período colonial.",
+    "Reconocemos que la casa no es un objeto congelado en 1720, sino un documento vivo que ha acumulado historia. Por ello, no buscamos eliminar todas las transformaciones posteriores, sino discernir cuáles aportan valor histórico y cuáles comprometen la integridad del edificio. Las adiciones del siglo XIX fueron respetadas; solo se removieron intervenciones del siglo XX que resultaban incompatibles.",
+    "Priorizamos la conservación preventiva mediante el control de causas de deterioro (humedad, plagas, cargas estructurales) antes que intervenciones cosm éticas. La restauración visible fue siempre la mínima necesaria para garantizar la permanencia del bien.",
+  ],
+  intervencionesRealizadas: [
+    "Restauración de balcones: Desarmado cuid adoso de los balcones de madera para consolidación estructural. Tratamiento anti-xilófago y reintegración de balaustres faltantes mediante prótesis talladas en madera de quebracho siguiendo los originales. Rejuvenecimiento de uniones mediante espigas nuevas de madera dura.",
+    "Consolidación de muros de tapia:*Inyecciones de lechada de cal en fisuras. Reposición localizada de material con mezcla compatible de tierra, cal y fibra vegetal. Tratamiento de humedad ascendente mediante barrera química y ventilación del espacio sanitario.",
+    "Recuperación de pisos: Remoción de capas de cemento del siglo XX para revelar el piso original de ladrillo cocido. Limpieza mecánica suave y consolidación de piezas sueltas. Reintegración de ladrillos faltantes con material de demolición de época similar, distinguible por marcas discretas en el reverso.",
+    "Instalaciones contemporáneas: Integración de sistemas eléctricos, sanitarios y de climatización mediante canalización oculta que no afecta elementos patrimoniales. Luminarias de diseño contemporáneo pero discreto que respetan la atmósfera del espacio histórico.",
+  ],
+  resultado: [
+    "La intervención permitió recuperar la integridad arquitectónica de la Casa Álvarez sin comprometer su autenticidad histórica. El edificio retornó a uso residencial, garantizando su mantenimiento permanente y la continuidad de su función original.",
+    "El proyecto fue distinguido por el Ministerio de Cultura de Argentina como Intervención Ejemplar en Patrimonio Urbano. La metodología aplicada sirve como referencia para futuros trabajos en las escasas casas coloniales que aún subsisten en el casco histórico de Buenos Aires.",
+  ],
+};
+
+// Galería de Imágenes
+const galleryImages = [
+  {
+    src: "/images/casa-colonial/01.png",
+    caption: "Fachada con balcones volados restaurados",
+    size: "full" as const,
+  },
+  {
+    src: "/images/casa-colonial/02.png",
+    caption: "Detalle de balcón con balaustres torneados originales",
+    size: "half" as const,
+  },
+  {
+    src: "/images/casa-colonial/03.png",
+    caption: "Patio interior con galería de postes de madera",
+    size: "half" as const,
+  },
+  {
+    src: "/images/casa-colonial/04.png",
+    caption: "Piso de ladrillo cocido recuperado bajo capa de cemento",
+    size: "third" as const,
+  },
+  {
+    src: "/images/casa-colonial/05.png",
+    caption: "Estructura de vigas de madera del techo",
+    size: "third" as const,
+  },
+];
+
+// Navegación
+const navigation = {
+  previousProject: {
+    name: "Monasterio de San Bernardo",
+    url: "/proyecto/monasterio-de-san-bernardo",
+  },
+  nextProject: {
+    name: "Palacio Municipal",
+    url: "/proyecto/palacio-municipal",
+  },
+};
+---
+
+<Layout
+  title="Casa Colonial Álvarez (1720) — ATELIER VIREN"
+  description="Restauración de casa colonial del siglo XVIII en Buenos Aires, Argentina. Intervención en arquitectura doméstica virreinal realizada por ATELIER VIREN 2022-2023."
+>
+  <ProjectHero {...projectData} />
+  <TechnicalData building={buildingData} intervention={interventionData} />
+  <MemoriaDescriptiva {...memoria} />
+  <ProjectGallery images={galleryImages} />
+  <ProjectNavigation {...navigation} />
+</Layout>

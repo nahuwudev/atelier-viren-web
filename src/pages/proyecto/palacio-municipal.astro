@@ -1,0 +1,137 @@
+---
+/**
+ * Palacio Municipal (1880 / 2025)
+ * Página de detalle completa con documentación museística
+ */
+
+import Layout from "@/layouts/Layout.astro";
+import ProjectHero from "@/modules/proyecto/ProjectHero.astro";
+import TechnicalData from "@/modules/proyecto/TechnicalData.astro";
+import MemoriaDescriptiva from "@/modules/proyecto/MemoriaDescriptiva.astro";
+import ProjectGallery from "@/modules/proyecto/ProjectGallery.astro";
+import ProjectNavigation from "@/modules/proyecto/ProjectNavigation.astro";
+
+// Datos del proyecto
+const projectData = {
+  name: "Palacio Municipal",
+  constructionYear: "1880",
+  restorationYear: "2025",
+  location: "Montevideo, Uruguay",
+  typology: "Edificio Republicano",
+  heroImage: "/images/palacio/01.png",
+};
+
+// Ficha Técnica
+const buildingData = {
+  constructionYear: "1880",
+  originalArchitect: "Arq. Mauricio Cravotto (atribuido)",
+  architecturalStyle: "Ecléctico Republicano / Neoclásico",
+  totalArea: "4.800 m²",
+  previousState: "Abandono parcial, deterioro de fachadas y cubiertas",
+};
+
+const interventionData = {
+  restorationYear: "2023–2025",
+  projectDuration: "20 meses",
+  atelierTeam: "12 profesionales especializados",
+  appliedTechniques: [
+    "Restauración de ornamentación en estuco",
+    "Consolidación estructural de entrepisos metálicos",
+    "Recuperación de carpinterías históricas",
+    "Integración de accesibilidad universal",
+  ],
+  currentState: "Uso institucional activo (municipalidad)",
+};
+
+// Memoria Descriptiva
+const memoria = {
+  contextoHistorico: [
+    "El Palacio Municipal de Montevideo fue construido entre 1878 y 1880 como respuesta a la necesidad de un edificio representativo que albergara la administración municipal de la capital uruguaya. Su construcción coincidió con el período de modernización urbana y consolidación republicana que caracterizó a Uruguay en la segunda mitad del siglo XIX.",
+    "El edificio responde al lenguaje ecléctico propio de la arquitectura institucional sudamericana de fines del siglo XIX, combinando elementos neoclásicos en su composición general con ornamentación academicista francesa. La fachada principal, orientada a la Plaza de la Constitución, funciona como telón urbano monumental que define uno de los espacios públicos más significativos de Montevideo.",
+  ],
+  diagnostico: [
+    "Al inicio de nuestra intervención en 2023, el Palacio Municipal presentaba un cuadro de deterioro complejo producto de más de un siglo de uso continuo y mantenimiento irregular. La ornamentación de estuco de las fachadas mostraba desprendimientos significativos, pérdida de elementos decorativos y erosión generalizada por contaminación atmosférica y agua de lluvia.",
+    "La estructura de entrepisos metálicos exhibía corrosión avanzada en puntos críticos, producto de filtraciones desde la cubierta. Las carpinterías de madera originales habían sido parcialmente reemplazadas en el siglo XX por ventanas de aluminio de diseño incompatible. El sistema de cubiertas presentaba múltiples puntos de ingreso de agua, comprometiendo no solo la estructura sino también los cielos rasos ornamentados del interior.",
+    "Un aspecto crítico era la inaccesibilidad del edificio para personas con movilidad reducida. La escalinata monumental del acceso principal y la ausencia de ascensores convertían gran parte del edificio en inaccesible, incumpliendo normativas contemporáneas de accesibilidad universal.",
+  ],
+  criteriosIntervencion: [
+    "Nuestra intervención se planteó como un delicado equilibrio entre conservación del carácter histórico y adaptación a exigencias funcionales contemporáneas. Reconocimos que el edificio no es solo un monumento, sino un espacio de trabajo activo que debe responder a las necesidades operativas de la municipalidad del siglo XXI.",
+    "Adoptamos el criterio de intervención mínima visible pero máxima efectividad técnica. Priorizamos la consolidación estructural oculta, la recuperación de elementos originales donde subsistían, y la reintegración respetuosa donde la pérdida era irreversible. Las adiciones contemporáneas necesarias (accesibilidad, instalaciones técnicas) se diseñaron con lenguaje distinguible pero integrado.",
+    "El desafío mayor fue la integración de accesibilidad universal sin afectar el carácter monumental de los espacios históricos. Optamos por intervenciones discretas: plataforma elevadora oculta en vestíbulo lateral, ascensor integrado en patio de servicio, y rampa retráctil de acceso principal que se activa solo cuando es necesaria.",
+  ],
+  intervencionesRealizadas: [
+    "Restauración de fachadas: Limpieza controlada de estucos mediante métodos químicos suaves. Consolidación de ornamentación existente mediante inyecciones de resinas acrílicas. Reintegración de elementos faltantes mediante moldeo de piezas originales conservadas, ejecutadas en mortero de cal con carga mineral compatible. Pinturas con silicatos de potasio para permitir transpirabilidad del muro.",
+    "Consolidación estructural: Refuerzo de estructura metálica de entrepisos mediante soldadura de placas de acero en puntos críticos. Protección anticorrosiva mediante sistemas epóxicos de alta durabilidad. Reemplazo puntual de perfiles irrecuperables por réplicas metálicas de idéntica sección.",
+    "Recuperación de carpinterías: Desmontaje y restauración en taller de carpinterías de madera originales conservadas. Tratamiento anti-xilófago, consolidación estructural y reintegración de piezas faltantes. Reposición de carpinterías perdidas mediante réplicas ejecutadas según documentación histórica fotográfica, distinguibles por pequeñas marcas en el reverso de los marcos.",
+    "Accesibilidad universal: Instalación de plataforma elevadora hidráulica de diseño minimalista en vestíbulo lateral. Ascensor panorámico con estructura metálica de diseño contemporáneo integrado en patio de servicio. Rampa telescópica retráctil en acceso principal que se despliega bajo demanda sin alterar la escalinata monumental.",
+    "Instalaciones técnicas: Integración de sistemas de climatización, detección de incendios y cableado estructurado mediante canalización oculta en espacios de servicio y bajo pisos técnicos elevados en zonas de oficinas. Iluminación LED programable que permite diferentes escenarios según horario y función.",
+  ],
+  resultado: [
+    "La intervención logró devolver al Palacio Municipal su dignidad arquitectónica sin comprometer su funcionalidad como sede administrativa contemporánea. El edificio recuperó su rol como landmark urbano en la Plaza de la Constitución, mientras que interiormente funciona como espacio de trabajo eficiente y accesible.",
+    "El proyecto fue reconocido con el Premio Nacional de Patrimonio de Uruguay 2025 en la categoría Mejor Intervención en Edificio Público. La metodología de integración de accesibilidad sin afectar valores patrimoniales ha sido citada como referencia en las nuevas normativas uruguayas de intervención en edificios históricos de uso público.",
+  ],
+};
+
+// Galería de Imágenes (paths preparados, imágenes pendientes de generación)
+const galleryImages = [
+  {
+    src: "/images/palacio/01.png",
+    caption: "Fachada principal sobre Plaza de la Constitución",
+    size: "full" as const,
+  },
+  {
+    src: "/images/palacio/02.png",
+    caption: "Detalle de ornamentación en estuco restaurada",
+    size: "half" as const,
+  },
+  {
+    src: "/images/palacio/03.png",
+    caption: "Escalera monumental interior con barandas de hierro forjado",
+    size: "half" as const,
+  },
+  {
+    src: "/images/palacio/04.png",
+    caption: "Salón de sesiones con cielo raso ornamentado",
+    size: "full" as const,
+  },
+  {
+    src: "/images/palacio/05.png",
+    caption: "Detalle de carpintería restaurada",
+    size: "third" as const,
+  },
+  {
+    src: "/images/palacio/06.png",
+    caption: "Estructura metálica de entrepiso consolidada",
+    size: "third" as const,
+  },
+  {
+    src: "/images/palacio/07.png",
+    caption: "Vista del edificio en contexto urbano",
+    size: "third" as const,
+  },
+  {
+    src: "/images/palacio/08.png",
+    caption: "Vista nocturna con iluminación arquitectónica",
+    size: "full" as const,
+  },
+];
+
+// Navegación
+const navigation = {
+  previousProject: {
+    name: "Casa Colonial Álvarez",
+    url: "/proyecto/casa-colonial-alvarez",
+  },
+};
+---
+
+<Layout
+  title="Palacio Municipal (1880) — ATELIER VIREN"
+  description="Restauración del Palacio Municipal de Montevideo, Uruguay. Intervención en arquitectura republicana del siglo XIX con integración de accesibilidad universal realizada por ATELIER VIREN 2023-2025."
+>
+  <ProjectHero {...projectData} />
+  <TechnicalData building={buildingData} intervention={interventionData} />
+  <MemoriaDescriptiva {...memoria} />
+  <ProjectGallery images={galleryImages} />
+  <ProjectNavigation {...navigation} />
+</Layout>

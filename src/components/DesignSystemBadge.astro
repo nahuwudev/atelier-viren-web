@@ -1,0 +1,101 @@
+---
+/**
+ * DesignSystemBadge — Badge Flotante
+ *
+ * Botón flotante discreto que indica el sistema de diseño usado.
+ * Posición: bottom-right, tono institucional.
+ */
+---
+
+<a
+  href="/design-system"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="design-badge"
+  title="Ver documentación del sistema de diseño ARCHÓN"
+>
+  <span class="badge-icon font-mono">◆</span>
+  <span class="badge-text font-mono"> Sistema de diseño ARCHÓN </span>
+</a>
+
+<style>
+  .design-badge {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background);
+
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    text-decoration: none;
+
+    transition: all var(--duration-base) var(--ease-smooth);
+    opacity: 0.7;
+  }
+
+  .design-badge:hover {
+    opacity: 1;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .badge-icon {
+    font-size: 0.625rem;
+    color: var(--color-accent);
+  }
+
+  .badge-text {
+    white-space: nowrap;
+  }
+
+  /* Responsive - Texto más corto en móvil */
+  @media (max-width: 640px) {
+    .design-badge {
+      bottom: var(--spacing-md);
+      right: var(--spacing-md);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-size: 0.6875rem;
+    }
+
+    .badge-text {
+      display: none;
+    }
+
+    .design-badge::after {
+      content: "ARCHÓN";
+      font-size: 0.6875rem;
+    }
+  }
+
+  /* Hide on scroll down (optional enhancement) */
+  @media (prefers-reduced-motion: no-preference) {
+    .design-badge {
+      animation: badge-fade-in var(--duration-slow) var(--ease-smooth) forwards;
+      animation-delay: 1s;
+      opacity: 0;
+    }
+  }
+
+  @keyframes badge-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 0.7;
+      transform: translateY(0);
+    }
+  }
+</style>

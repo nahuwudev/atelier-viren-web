@@ -1,0 +1,153 @@
+---
+/**
+ * AreasDeIntervencion — Áreas de Intervención
+ *
+ * Grid de servicios con tono institucional/académico.
+ * Menos comercial, más profesional.
+ */
+
+const areas = [
+  {
+    title: "Diagnóstico y Documentación",
+    description:
+      "Evaluación técnica del estado de conservación mediante estudios históricos, análisis estructural y caracterización de materiales originales.",
+  },
+  {
+    title: "Restauración Arquitectónica",
+    description:
+      "Intervención física sobre elementos constructivos deteriorados aplicando criterios de mínima intervención y máxima compatibilidad material.",
+  },
+  {
+    title: "Conservación Preventiva",
+    description:
+      "Implementación de sistemas de monitoreo y control ambiental para prevenir futuros procesos de deterioro del patrimonio edificado.",
+  },
+  {
+    title: "Asesoría Técnica",
+    description:
+      "Consultoría especializada para instituciones públicas y propietarios privados en materia de gestión y conservación de bienes patrimoniales.",
+  },
+];
+---
+
+<section class="areas-section section-spacing">
+  <div id="areas" class="container-archon">
+    <!-- Título de Sección -->
+    <h2 class="section-title font-serif">Áreas de Intervención</h2>
+
+    <!-- Introducción -->
+    <p class="section-intro font-serif">
+      Nuestro trabajo abarca el ciclo completo de conservación del patrimonio
+      arquitectónico, desde el estudio preliminar hasta el seguimiento
+      post-intervención.
+    </p>
+
+    <!-- Grid de Áreas -->
+    <div class="areas-grid">
+      {
+        areas.map((area, index) => (
+          <article
+            class="area-card"
+            style={`animation-delay: ${index * 100}ms;`}
+          >
+            <h3 class="area-title font-sans">{area.title}</h3>
+            <p class="area-description font-serif">{area.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .areas-section {
+    background-color: var(--color-background);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-foreground);
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: -0.01em;
+  }
+
+  .section-intro {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.7;
+    color: var(--color-foreground);
+    max-width: var(--max-width-text);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  /* Areas Grid */
+  .areas-grid {
+    display: grid;
+    gap: var(--spacing-xl);
+  }
+
+  @media (min-width: 768px) {
+    .areas-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-2xl);
+    }
+  }
+
+  /* Area Card */
+  .area-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    transition: all var(--duration-base) var(--ease-smooth);
+  }
+
+  .area-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  .area-title {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-foreground);
+    transition: color var(--duration-base) var(--ease-smooth);
+  }
+
+  .area-card:hover .area-title {
+    color: var(--color-accent);
+  }
+
+  .area-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-foreground);
+  }
+
+  /* Animation on scroll */
+  @media (prefers-reduced-motion: no-preference) {
+    .area-card {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fade-in-up var(--duration-base) var(--ease-smooth) forwards;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .section-title {
+      margin-bottom: var(--spacing-md);
+    }
+
+    .section-intro {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .area-card {
+      padding: var(--spacing-lg);
+    }
+  }
+</style>

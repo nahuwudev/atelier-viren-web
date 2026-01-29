@@ -1,0 +1,139 @@
+---
+/**
+ * Monasterio de San Bernardo (1595 / 2024)
+ * Página de detalle completa con documentación museística
+ */
+
+import Layout from "@/layouts/Layout.astro";
+import ProjectHero from "@/modules/proyecto/ProjectHero.astro";
+import TechnicalData from "@/modules/proyecto/TechnicalData.astro";
+import MemoriaDescriptiva from "@/modules/proyecto/MemoriaDescriptiva.astro";
+import ProjectGallery from "@/modules/proyecto/ProjectGallery.astro";
+import ProjectNavigation from "@/modules/proyecto/ProjectNavigation.astro";
+
+// Datos del proyecto
+const projectData = {
+  name: "Monasterio de San Bernardo",
+  constructionYear: "1595",
+  restorationYear: "2024",
+  location: "Cusco, Perú",
+  typology: "Monasterio Colonial",
+  heroImage: "/images/monasterio/01.png",
+};
+
+// Ficha Técnica
+const buildingData = {
+  constructionYear: "1595",
+  originalArchitect: "Orden Franciscana / Anónimo",
+  architecturalStyle: "Barroco Andino",
+  totalArea: "3.200 m²",
+  previousState: "Deterioro estructural severo por actividad sísmica",
+};
+
+const interventionData = {
+  restorationYear: "2022–2024",
+  projectDuration: "24 meses",
+  atelierTeam: "8 profesionales especializados",
+  appliedTechniques: [
+    "Consolidación de muros de adobe",
+    "Restauración lítica de portada barroca",
+    "Refuerzo estructural antisísmico",
+    "Recuperación de policromías coloniales",
+  ],
+  currentState: "Uso religioso y cultural activo",
+};
+
+// Memoria Descriptiva
+const memoria = {
+  contextoHistorico: [
+    "El Monasterio de San Bernardo fue fundado en 1595 por la orden franciscana en pleno auge del virreinato peruano. Su construcción coincidió con el proceso de evangelización y consolidación urbana de Cusco como capital religiosa y administrativa del sur andino.",
+    "Considerado una joya del barroco andino, el complejo integra técnicas constructivas europeas con saberes locales, resultando en una arquitectura híbrida característica del período colonial. La portada principal, tallada en piedra de origen volcánico, constituye uno de los ejemplos más notables de ornamentación barroca en el Perú.",
+  ],
+  diagnostico: [
+    "Al inicio de nuestra intervención en 2022, el monasterio presentaba daños estructurales significativos producto de la actividad sísmica regional. Los terremotos de 1650 y 1950 habían dejado grietas profundas en los muros de adobe, desplazamientos en la estructura del claustro y pérdida de material en la portada barroca.",
+    "Se identificaron además problemas de humedad ascendente que afectaban la integridad de los muros de adobe, desprendimiento de policromías originales en el artesonado del claustro, y elementos estructurales de madera con deterioro biológico avanzado. El estado general requería intervención urgente para evitar colapso parcial.",
+  ],
+  criteriosIntervencion: [
+    "Nuestra intervención se rigió por el principio de mínima intervención y máximo respeto al original. Cada decisión técnica fue sustentada por análisis histórico documental, estudios arqueológicos y ensayos de materiales realizados in situ.",
+    "Adoptamos el criterio de distinguibilidad: las intervenciones contemporáneas son identificables mediante análisis técnico pero visualmente integradas al conjunto histórico. Priorizamos técnicas tradicionales siempre que fuera posible, recurriendo a tecnología contemporánea solo cuando la conservación del original lo demandaba.",
+    "No buscamos devolver el edificio a un supuesto estado original idealizado. En cambio, respetamos la historia material del monasterio, incluyendo sus transformaciones y cicatrices como documento del paso del tiempo.",
+  ],
+  intervencionesRealizadas: [
+    "**Consolidación estructural:** Refuerzo de muros de adobe mediante inyecciones de mezcla compatible con el material original. Instalación de sistema antisísmico de disipadores ocultos que no alteran la apariencia histórica del conjunto.",
+    "**Restauración de portada barroca:** Limpieza controlada de la piedra volcánica mediante técnicas láser de baja intensidad. Reintegración de elementos faltantes con material pétreo compatible, diferenciable en análisis de cerca pero visualmente coherente.",
+    "**Recuperación de policromías:** Restauración del artesonado polícromo del claustro mediante consolidación de capas pictóricas originales. Remoción de repintes inadecuados del siglo XX que ocultaban la decoración barroca.",
+    "**Intervenciones en instalaciones:** Integración de sistemas de iluminación, seguridad y climatización discreta mediante canalización oculta en espacios de servicio. Instalación de sistemas de monitoreo estructural para vigilancia continua del comportamiento sísmico.",
+  ],
+  resultado: [
+    "La intervención logró estabilizar estructuralmente el monasterio sin alterar su carácter histórico. El edificio recuperó su uso religioso y cultural, albergando actualmente una comunidad franciscana activa y funciones como centro de estudios de arte barroco andino.",
+    "El proyecto fue reconocido por la UNESCO como ejemplo de buenas prácticas en conservación del patrimonio colonial latinoamericano. La documentación exhaustiva generada durante el proceso constituye un recurso académico valioso para futuras intervenciones en tipologías similares.",
+  ],
+};
+
+// Galería de Imágenes
+const galleryImages = [
+  {
+    src: "/images/monasterio/01.png",
+    caption: "Fachada principal con portada barroca restaurada",
+    size: "full" as const,
+  },
+  {
+    src: "/images/monasterio/02.png",
+    caption: "Detalle de columnas salomónicas en portada principal",
+    size: "half" as const,
+  },
+  {
+    src: "/images/monasterio/05.png",
+    caption: "Artesonado polícromo del claustro tras restauración",
+    size: "half" as const,
+  },
+  {
+    src: "/images/monasterio/03.png",
+    caption: "Claustro interior con arquerías de piedra",
+    size: "full" as const,
+  },
+  {
+    src: "/images/monasterio/04.png",
+    caption: "Detalle de muro de adobe consolidado",
+    size: "third" as const,
+  },
+  {
+    src: "/images/monasterio/07.png",
+    caption: "Diagrama técnico de refuerzo estructural antisísmico",
+    size: "third" as const,
+  },
+  {
+    src: "/images/monasterio/06.png",
+    caption: "Vista aérea del conjunto monástico en contexto urbano",
+    size: "third" as const,
+  },
+  {
+    src: "/images/monasterio/08.png",
+    caption: "Vista nocturna con iluminación arquitectónica integrada",
+    size: "full" as const,
+  },
+];
+
+// Navegación
+const navigation = {
+  nextProject: {
+    name: "Casa Colonial Álvarez",
+    url: "/proyecto/casa-colonial-alvarez",
+  },
+  previousProject: {
+    name: "Palacio Municipal",
+    url: "/proyecto/palacio-municipal",
+  },
+};
+---
+
+<Layout
+  title="Monasterio de San Bernardo (1595) — ATELIER VIREN"
+  description="Restauración y conservación del Monasterio de San Bernardo en Cusco, Perú. Intervención en patrimonio barroco andino colonial realizada por ATELIER VIREN 2022-2024."
+>
+  <ProjectHero {...projectData} />
+  <TechnicalData building={buildingData} intervention={interventionData} />
+  <MemoriaDescriptiva {...memoria} />
+  <ProjectGallery images={galleryImages} />
+  <ProjectNavigation {...navigation} />
+</Layout>

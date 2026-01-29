@@ -1,0 +1,231 @@
+---
+/**
+ * Contact — Contacto Institucional
+ *
+ * Formulario minimalista + información de contacto.
+ * Tono: consulta institucional, no CRM comercial.
+ */
+---
+
+<section class="contact-section section-spacing">
+  <div class="container-archon">
+    <!-- Título de Sección -->
+    <h2 id="contacto" class="section-title font-serif">Contacto</h2>
+
+    <!-- Grid: Info + Formulario -->
+    <div class="contact-grid">
+      <!-- Columna 1: Información de Contacto -->
+      <div class="contact-info">
+        <p class="contact-lead font-serif">
+          Para consultas sobre proyectos de restauración y conservación del
+          patrimonio arquitectónico.
+        </p>
+
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-label font-mono">EMAIL</span>
+            <a
+              href="mailto:contacto@atelierviren.com"
+              class="contact-value font-mono"
+            >
+              contacto@atelierviren.com
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-label font-mono">UBICACIÓN</span>
+            <span class="contact-value font-mono">
+              Buenos Aires, Argentina
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna 2: Formulario -->
+      <div class="contact-form-wrapper">
+        <form class="contact-form" action="#" method="POST">
+          <div class="form-group">
+            <label for="name" class="form-label font-mono">NOMBRE</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input font-sans"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label font-mono">EMAIL</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input font-sans"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label font-mono">MENSAJE</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              class="form-input form-textarea font-sans"
+              required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit font-mono">
+            Solicitar una conversación
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    background-color: var(--color-background);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-foreground);
+    margin-bottom: var(--spacing-2xl);
+    letter-spacing: -0.01em;
+  }
+
+  /* Contact Grid */
+  .contact-grid {
+    display: grid;
+    gap: var(--spacing-3xl);
+  }
+
+  @media (min-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--spacing-3xl);
+    }
+  }
+
+  /* Contact Info */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .contact-lead {
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    line-height: 1.7;
+    color: var(--color-foreground);
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .contact-label {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .contact-value {
+    font-size: 0.875rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+    transition: color var(--duration-base) var(--ease-smooth);
+  }
+
+  .contact-value:hover {
+    color: var(--color-accent);
+  }
+
+  /* Contact Form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .form-label {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .form-input {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-size: 1rem;
+    transition: all var(--duration-base) var(--ease-smooth);
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: var(--font-family-sans);
+  }
+
+  .form-submit {
+    padding: var(--spacing-md) var(--spacing-xl);
+    border: 1px solid var(--color-foreground);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all var(--duration-base) var(--ease-smooth);
+    align-self: flex-start;
+  }
+
+  .form-submit:hover {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .section-title {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .contact-grid {
+      gap: var(--spacing-2xl);
+    }
+
+    .form-submit {
+      width: 100%;
+    }
+  }
+</style>

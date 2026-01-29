@@ -1,0 +1,355 @@
+@import "tailwindcss";
+
+/* ============================================
+   ARCHÓN — Typography Imports
+   Fontsource: Jerarquía Editorial
+   ============================================ */
+@import "@fontsource/libre-baskerville/400.css";
+@import "@fontsource/libre-baskerville/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/jetbrains-mono/400.css";
+
+/* ============================================
+   ARCHÓN Design System
+   Arquitectura Digital — Sistema Fundamental
+   ============================================ */
+
+@theme {
+  /* --- Color Palette: Materiales Arquitectónicos --- */
+  --color-stone-light: #e7e5e1;
+  --color-stone-dark: #2f2f2d;
+  --color-iron-gray: #6b6e6a;
+  --color-oxide-accent: #8c4a32;
+
+  /* Aliases semánticos */
+  --color-background: var(--color-stone-light);
+  --color-foreground: var(--color-stone-dark);
+  --color-muted: var(--color-iron-gray);
+  --color-accent: var(--color-oxide-accent);
+  --color-border: var(--color-iron-gray);
+
+  /* --- Typography: Jerarquía Editorial --- */
+  --font-family-serif: "Libre Baskerville", Georgia, serif;
+  --font-family-sans:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-family-mono: "JetBrains Mono", "Courier New", monospace;
+
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* --- Spacing: Sistema de Grilla (Base 8px) --- */
+  --spacing-unit: 8px;
+  --spacing-xs: 16px; /* 2 units */
+  --spacing-sm: 24px; /* 3 units */
+  --spacing-md: 32px; /* 4 units */
+  --spacing-lg: 48px; /* 6 units */
+  --spacing-xl: 64px; /* 8 units */
+  --spacing-2xl: 96px; /* 12 units */
+  --spacing-3xl: 128px; /* 16 units */
+
+  /* --- Layout: Márgenes Editoriales --- */
+  --margin-page-mobile: var(--spacing-md);
+  --margin-page-desktop: var(--spacing-2xl);
+  --max-width-content: 1280px;
+  --max-width-text: 65ch;
+
+  /* --- Animation: Movimiento Contenido --- */
+  --duration-fast: 200ms;
+  --duration-base: 400ms;
+  --duration-slow: 600ms;
+  --duration-glacial: 1200ms;
+
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --- Radius (mínimo, casi inexistente) --- */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-base: 4px;
+}
+
+/* ============================================
+   Base Styles — Estructura Fundamental
+   ============================================ */
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* scroll-behavior: smooth; - Removido, Lenis lo maneja */
+    overflow-x: hidden; /* Prevenir scroll horizontal */
+    max-width: 100vw; /* Forzar límite de viewport */
+  }
+
+  body {
+    font-family: var(--font-family-serif);
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevenir scroll horizontal */
+    max-width: 100vw; /* Forzar límite de viewport */
+    position: relative; /* Contexto para absolute positioning */
+  }
+
+  /* Typography Hierarchy */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-family-serif);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    color: var(--color-foreground);
+    margin: 0;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  h4 {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+  }
+
+  p {
+    margin: 0;
+    max-width: var(--max-width-text);
+  }
+
+  /* Links */
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--duration-base) var(--ease-smooth);
+  }
+
+  a:hover {
+    color: var(--color-accent);
+  }
+
+  /* UI Elements */
+  button {
+    font-family: var(--font-family-sans);
+    font-weight: var(--font-weight-semibold);
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all var(--duration-base) var(--ease-smooth);
+  }
+
+  input,
+  textarea {
+    font-family: var(--font-family-sans);
+    color: var(--color-foreground);
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    transition: border-color var(--duration-base) var(--ease-smooth);
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  /* Code & Technical */
+  code,
+  pre {
+    font-family: var(--font-family-mono);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  /* Responsive Media - Prevenir overflow horizontal */
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Tables - Scrollable en mobile */
+  table {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--color-oxide-accent);
+    color: var(--color-stone-light);
+  }
+}
+
+/* ============================================
+   Utility Classes — Arquitectura Digital
+   ============================================ */
+
+@layer utilities {
+  /* Typography Utilities */
+  .font-serif {
+    font-family: var(--font-family-serif);
+  }
+
+  .font-sans {
+    font-family: var(--font-family-sans);
+  }
+
+  .font-mono {
+    font-family: var(--font-family-mono);
+  }
+
+  /* Layout Utilities */
+  .container-archon {
+    width: 100%;
+    max-width: var(--max-width-content);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px; /* Reducido para mobile */
+    padding-right: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .container-archon {
+      padding-left: var(--margin-page-desktop);
+      padding-right: var(--margin-page-desktop);
+    }
+  }
+
+  .text-max {
+    max-width: var(--max-width-text);
+  }
+
+  /* Spacing Utilities */
+  .section-spacing {
+    padding-top: var(--spacing-3xl);
+    padding-bottom: var(--spacing-3xl);
+  }
+
+  @media (max-width: 768px) {
+    .section-spacing {
+      padding-top: var(--spacing-xl);
+      padding-bottom: var(--spacing-xl);
+    }
+  }
+
+  /* Animation Utilities */
+  .transition-smooth {
+    transition: all var(--duration-base) var(--ease-smooth);
+  }
+
+  .transition-slow {
+    transition: all var(--duration-slow) var(--ease-in-out);
+  }
+
+  .transition-glacial {
+    transition: all var(--duration-glacial) var(--ease-in-out);
+  }
+
+  /* Hover Effects */
+  .hover-elevate {
+    transition: transform var(--duration-base) var(--ease-smooth);
+  }
+
+  .hover-elevate:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-accent {
+    transition: color var(--duration-base) var(--ease-smooth);
+  }
+
+  .hover-accent:hover {
+    color: var(--color-accent);
+  }
+
+  /* Grid Architectural */
+  .grid-archon {
+    display: grid;
+    gap: var(--spacing-lg);
+  }
+
+  @media (min-width: 768px) {
+    .grid-archon-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-archon-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+/* ============================================
+   Animation Keyframes — Movimiento Significativo
+   ============================================ */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up var(--duration-slow) var(--ease-smooth);
+}
+
+.animate-fade-in {
+  animation: fade-in var(--duration-base) var(--ease-smooth);
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right var(--duration-slow) var(--ease-smooth);
+}

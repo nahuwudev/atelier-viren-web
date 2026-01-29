@@ -1,0 +1,196 @@
+---
+/**
+ * ProjectHero — Hero para páginas de proyecto individual
+ * Foto grande + metadata técnica del edificio
+ */
+
+interface Props {
+  name: string;
+  constructionYear: string;
+  restorationYear: string;
+  location: string;
+  typology: string;
+  heroImage: string;
+}
+
+const {
+  name,
+  constructionYear,
+  restorationYear,
+  location,
+  typology,
+  heroImage,
+} = Astro.props;
+---
+
+<section class="project-hero">
+  <!-- Background Image -->
+  <div class="hero-image" style={`background-image: url('${heroImage}');`}>
+  </div>
+
+  <!-- Overlay & Content -->
+  <div class="hero-overlay">
+    <div class="container-archon">
+      <div class="hero-content">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb font-mono">
+          <a href="/">ARCHÓN</a>
+          <span class="separator">/</span>
+          <a href="/#proyectos">PROYECTOS</a>
+          <span class="separator">/</span>
+          <span class="current">{name.toUpperCase()}</span>
+        </nav>
+
+        <!-- Project Title -->
+        <h1 class="project-title font-serif">{name}</h1>
+
+        <!-- Metadata Grid -->
+        <div class="hero-metadata">
+          <div class="metadata-group">
+            <span class="label font-mono">CONSTRUCCIÓN</span>
+            <span class="value font-mono">{constructionYear}</span>
+          </div>
+
+          <div class="metadata-group">
+            <span class="label font-mono">RESTAURACIÓN</span>
+            <span class="value font-mono">{restorationYear}</span>
+          </div>
+
+          <div class="metadata-group">
+            <span class="label font-mono">UBICACIÓN</span>
+            <span class="value font-mono">{location}</span>
+          </div>
+
+          <div class="metadata-group">
+            <span class="label font-mono">TIPOLOGÍA</span>
+            <span class="value font-mono">{typology}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  /* Hero Image - Grayscale, full coverage */
+  .hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%);
+    z-index: 0;
+  }
+
+  /* Dark Overlay for Text Legibility */
+  .hero-overlay {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background: linear-gradient(
+      to top,
+      rgba(47, 47, 45, 0.95) 0%,
+      rgba(47, 47, 45, 0.7) 60%,
+      rgba(47, 47, 45, 0) 100%
+    );
+    padding-top: var(--spacing-3xl);
+    padding-bottom: var(--spacing-3xl);
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--color-stone-light);
+    opacity: 0.7;
+  }
+
+  .breadcrumb a {
+    color: var(--color-stone-light);
+    text-decoration: none;
+    transition: opacity var(--duration-base) var(--ease-smooth);
+  }
+
+  .breadcrumb a:hover {
+    opacity: 1;
+  }
+
+  .breadcrumb .separator {
+    margin: 0 0.5rem;
+  }
+
+  .breadcrumb .current {
+    opacity: 1;
+  }
+
+  /* Project Title */
+  .project-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-stone-light);
+    margin: 0;
+  }
+
+  /* Hero Metadata */
+  .hero-metadata {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 900px;
+  }
+
+  .metadata-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .metadata-group .label {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-stone-light);
+    opacity: 0.6;
+  }
+
+  .metadata-group .value {
+    font-size: 0.875rem;
+    color: var(--color-stone-light);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .project-hero {
+      min-height: 70vh;
+    }
+
+    .hero-overlay {
+      padding-top: var(--spacing-2xl);
+      padding-bottom: var(--spacing-2xl);
+    }
+
+    .hero-metadata {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+    }
+  }
+</style>

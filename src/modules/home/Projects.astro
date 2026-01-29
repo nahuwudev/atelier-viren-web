@@ -1,0 +1,253 @@
+---
+/**
+ * Projects — Archivo de Proyectos
+ * 
+ * Grid editorial 2-3 columnas con sistema de archivo/catálogo.
+ * Imágenes en grayscale como fondo al hover (estratégico, nunca protagonista).
+ */
+
+const projects = [
+  {
+    name: "Monasterio de San Bernardo",
+    constructionYear: "1595",
+    restorationYear: "2024",
+    location: "Cusco, Perú",
+    typology: "Monasterio Colonial",
+    image: "/images/monasterio/01.png",
+  },
+  {
+    name: "Casa Colonial Álvarez",
+    constructionYear: "1720",
+    restorationYear: "2023",
+    location: "Buenos Aires, Argentina",
+    typology: "Casa Colonial",
+    image: "/images/casa-colonial/01.png",
+  },
+  {
+    name: "Palacio Municipal",
+    constructionYear: "1880",
+    restorationYear: "2025",
+    location: "Montevideo, Uruguay",
+    typology: "Edificio Republicano",
+    image: "/images/palacio/01.png",
+  },
+];
+---
+
+<section id="proyectos" class="projects-section section-spacing">
+  <div class="container-archon">
+    
+    <!-- Título de Sección -->
+    <h2 class="section-title">Proyectos de Restauración</h2>
+    
+    <!-- Grid de Proyectos -->
+    <div class="projects-grid">
+      {projects.map((project, index) => (
+        <a 
+          href={`/proyecto/${project.name.toLowerCase().replace(/\s+/g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`}
+          class="project-card-link"
+        >
+          <article 
+            class="project-card" 
+            style={`animation-delay: ${index * 150}ms;`}
+          >
+          <!-- Background Image (hover reveal) -->
+          <div 
+            class="project-image" 
+            style={`background-image: url('${project.image}');`}
+          ></div>
+          
+          <!-- Content Overlay -->
+          <div class="project-content">
+            <!-- Nombre del Proyecto -->
+            <h3 class="project-name font-serif">{project.name}</h3>
+            
+            <!-- Metadata Grid -->
+            <div class="project-metadata">
+              <div class="metadata-item">
+                <span class="metadata-label font-mono">CONSTRUCCIÓN</span>
+                <span class="metadata-value font-mono">{project.constructionYear}</span>
+              </div>
+              
+              <div class="metadata-item">
+                <span class="metadata-label font-mono">RESTAURACIÓN</span>
+                <span class="metadata-value font-mono">{project.restorationYear}</span>
+              </div>
+              
+              <div class="metadata-item">
+                <span class="metadata-label font-mono">UBICACIÓN</span>
+                <span class="metadata-value font-mono">{project.location}</span>
+              </div>
+              
+              <div class="metadata-item">
+                <span class="metadata-label font-mono">TIPOLOGÍA</span>
+                <span class="metadata-value font-mono">{project.typology}</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        </a>
+      ))}
+    </div>
+    
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    background-color: var(--color-background);
+  }
+  
+  .section-title {
+    font-family: var(--font-family-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-foreground);
+    margin-bottom: var(--spacing-2xl);
+    letter-spacing: -0.01em;
+  }
+  
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+    align-items: stretch; /* Asegura que todas las cards tengan la misma altura */
+  }
+  
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-xl);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Project Card Link Wrapper */
+  .project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%; /* Permite que el link ocupe todo el espacio disponible */
+  }
+  
+  /* Project Card - Sistema de Archivo */
+  .project-card {
+    position: relative;
+    border: 1px solid var(--color-border);
+    padding: var(--spacing-lg);
+    background-color: var(--color-background);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all var(--duration-slow) var(--ease-smooth);
+    min-height: 400px;
+    height: 100%; /* Se estira para igualar altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Background Image - Grayscale, low opacity, hover reveal */
+  .project-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%);
+    opacity: 0;
+    transition: opacity var(--duration-glacial) var(--ease-in-out);
+    z-index: 0;
+  }
+  
+  /* Content Overlay - Always visible */
+  .project-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  
+  /* Project Name */
+  .project-name {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    color: var(--color-foreground);
+    transition: color var(--duration-base) var(--ease-smooth);
+  }
+  
+  /* Metadata Grid */
+  .project-metadata {
+    display: grid;
+    gap: var(--spacing-md);
+  }
+  
+  .metadata-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .metadata-label {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  
+  .metadata-value {
+    font-size: 0.875rem;
+    color: var(--color-foreground);
+    transition: color var(--duration-base) var(--ease-smooth);
+  }
+  
+  /* Hover States */
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+  
+  .project-card:hover .project-image {
+    opacity: 0.15; /* Sutil background reveal */
+  }
+  
+  .project-card:hover .project-name {
+    color: var(--color-accent);
+  }
+  
+  .project-card:hover .metadata-value {
+    color: var(--color-accent);
+  }
+  
+  /* Animation on scroll */
+  @media (prefers-reduced-motion: no-preference) {
+    .project-card {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fade-in-up var(--duration-slow) var(--ease-smooth) forwards;
+    }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .project-card {
+      min-height: 350px;
+      padding: var(--spacing-md);
+    }
+    
+    .section-title {
+      margin-bottom: var(--spacing-xl);
+    }
+  }
+</style>

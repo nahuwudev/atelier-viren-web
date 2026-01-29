@@ -1,0 +1,233 @@
+---
+/**
+ * SideNav — Navegación Lateral Fija
+ *
+ * Navegación minimalista tipo "dot navigation" para secciones home.
+ * Fixed position, centrada verticalmente, scroll suave vía Lenis.
+ */
+
+const sections = [
+  { id: "hero", label: "Inicio" },
+  { id: "sobre-nosotros", label: "Sobre Nosotros" },
+  { id: "proyectos", label: "Proyectos" },
+  { id: "areas", label: "Áreas" },
+  { id: "filosofia", label: "Filosofía" },
+  { id: "contacto", label: "Contacto" },
+];
+---
+
+<nav class="side-nav" aria-label="Navegación de secciones">
+  <ul class="nav-list">
+    {
+      sections.map((section) => (
+        <li class="nav-item">
+          <a
+            href={`#${section.id}`}
+            class="nav-link"
+            data-section={section.id}
+            aria-label={`Ir a ${section.label}`}
+          >
+            <span class="nav-dot" />
+            <span class="nav-label font-mono">{section.label}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script>
+  import Lenis from "@studio-freight/lenis";
+
+  // Obtener la instancia de Lenis (debe estar ya inicializada en SmoothScroll)
+  // Esperamos a que el DOM esté listo
+  document.addEventListener("DOMContentLoaded", () => {
+    // Smooth scroll con Lenis al hacer click en links
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevenir salto instantáneo
+
+        const targetId = link.getAttribute("href");
+        if (!targetId) return;
+
+        const targetElement = document.querySelector(targetId);
+        if (!targetElement) return;
+
+        // Scroll suave usando Lenis (accedemos a la instancia global)
+        const lenis = (window as any).lenis;
+        if (lenis) {
+          lenis.scrollTo(targetElement, {
+            offset: 0,
+            duration: 1.4, // Mismo duration que la configuración
+            easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          });
+        } else {
+          // Fallback si Lenis no está disponible
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+
+    // Active section tracking con Intersection Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Remover active de todos
+            document.querySelectorAll(".nav-link").forEach((link) => {
+              link.classList.remove("active");
+            });
+
+            // Agregar active al link correspondiente
+            const id = entry.target.id;
+            const activeLink = document.querySelector(`[data-section="${id}"]`);
+            if (activeLink) {
+              activeLink.classList.add("active");
+            }
+          }
+        });
+      },
+      {
+        rootMargin: "-50% 0px -50% 0px", // Trigger cuando esté en el centro
+        threshold: 0,
+      },
+    );
+
+    // Observar todas las secciones
+    document.querySelectorAll("section[id]").forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>
+
+<style>
+  .side-nav {
+    position: fixed;
+    right: var(--spacing-lg);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    opacity: 0;
+    animation: fade-in-side 800ms ease-out 1s forwards;
+  }
+
+  @keyframes fade-in-side {
+    from {
+      opacity: 0;
+      transform: translateY(-50%) translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .nav-item {
+    margin: 0;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    text-decoration: none;
+    color: var(--color-muted);
+    transition: all var(--duration-base) var(--ease-smooth);
+    padding: var(--spacing-xs);
+    position: relative;
+  }
+
+  /* Dot indicator */
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background-color: transparent;
+    transition: all var(--duration-base) var(--ease-smooth);
+    flex-shrink: 0;
+  }
+
+  /* Label - oculto por defecto */
+  .nav-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all var(--duration-base) var(--ease-smooth);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  /* Hover states */
+  .nav-link:hover .nav-dot {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    transform: scale(1.3);
+  }
+
+  .nav-link:hover .nav-label {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* Active state */
+  .nav-link.active .nav-dot {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    width: 12px;
+    height: 12px;
+  }
+
+  .nav-link.active .nav-label {
+    opacity: 1; /* Label visible para sección activa */
+    transform: translateX(0);
+  }
+
+  .nav-link.active {
+    color: var(--color-foreground);
+  }
+
+  /* Sección Hero - Label blanco para contraste con fondo oscuro */
+  .nav-link.active[data-section="hero"] {
+    color: var(--color-stone-light);
+  }
+
+  .nav-link.active[data-section="hero"] .nav-label {
+    color: var(--color-stone-light);
+  }
+
+  /* Responsive - Ocultar en mobile */
+  @media (max-width: 1024px) {
+    .side-nav {
+      display: none;
+    }
+  }
+
+  /* Ajuste para pantallas pequeñas desktop */
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    .side-nav {
+      right: var(--spacing-md);
+    }
+
+    .nav-list {
+      gap: var(--spacing-sm);
+    }
+  }
+</style>

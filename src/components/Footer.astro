@@ -1,0 +1,186 @@
+---
+/**
+ * Footer — Pie de Página Institucional
+ *
+ * Footer minimalista con copyright, links rápidos y metadata.
+ * Tono: institucional, no comercial.
+ */
+
+const currentYear = new Date().getFullYear();
+
+const quickLinks = [
+  { name: "Proyectos", href: "/#proyectos" },
+  { name: "Áreas de Intervención", href: "/#areas" },
+  { name: "Filosofía", href: "/#filosofia" },
+  { name: "Contacto", href: "/#contacto" },
+];
+---
+
+<footer class="footer">
+  <div class="container-archon">
+    <div class="footer-grid">
+      <!-- Columna 1: Branding -->
+      <div class="footer-brand">
+        <h3 class="footer-logo font-serif">ATELIER VIREN</h3>
+        <p class="footer-tagline font-serif">
+          Intervenciones contemporáneas sobre arquitectura histórica
+        </p>
+      </div>
+
+      <!-- Columna 2: Links Rápidos -->
+      <div class="footer-links">
+        <h4 class="footer-heading font-mono">NAVEGACIÓN</h4>
+        <nav class="footer-nav">
+          <ul class="footer-list">
+            {
+              quickLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="footer-link font-sans">
+                    {link.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Columna 3: Información Legal -->
+      <div class="footer-legal">
+        <h4 class="footer-heading font-mono">INFORMACIÓN</h4>
+        <p class="footer-text font-sans">
+          Estudio dedicado a la restauración y conservación crítica del
+          patrimonio arquitectónico.
+        </p>
+        <p class="footer-text font-mono">Buenos Aires, Argentina</p>
+      </div>
+    </div>
+
+    <!-- Separador -->
+    <div class="footer-divider"></div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p class="footer-copyright font-mono">
+        © {currentYear} ATELIER VIREN. Todos los derechos reservados.
+      </p>
+      <p class="footer-note font-mono">Proyecto prototipo educativo</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-background);
+    border-top: 1px solid var(--color-border);
+    padding: var(--spacing-3xl) 0 var(--spacing-xl);
+    margin-top: var(--spacing-3xl);
+  }
+
+  /* Footer Grid */
+  .footer-grid {
+    display: grid;
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: var(--spacing-3xl);
+    }
+  }
+
+  /* Footer Brand */
+  .footer-logo {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-foreground);
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 0.02em;
+  }
+
+  .footer-tagline {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+    max-width: 320px;
+  }
+
+  /* Footer Links */
+  .footer-heading {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .footer-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .footer-link {
+    font-size: 0.9375rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+    transition: color var(--duration-base) var(--ease-smooth);
+  }
+
+  .footer-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* Footer Legal */
+  .footer-text {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* Footer Divider */
+  .footer-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-border);
+    margin: var(--spacing-xl) 0;
+  }
+
+  /* Footer Bottom */
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .footer-copyright,
+  .footer-note {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer {
+      padding: var(--spacing-2xl) 0 var(--spacing-lg);
+    }
+
+    .footer-grid {
+      gap: var(--spacing-xl);
+    }
+  }
+</style>

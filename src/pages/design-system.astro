@@ -1,0 +1,404 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="ARCHÓN — Design System"
+  description="Sistema de diseño arquitectónico digital"
+>
+  <!-- Design System Showcase -->
+  <div class="container-archon section-spacing">
+    <!-- Header -->
+    <header style="margin-bottom: var(--spacing-3xl);">
+      <h1 style="margin-bottom: var(--spacing-md);">ARCHÓN</h1>
+      <p
+        class="font-sans text-max"
+        style="color: var(--color-muted); font-size: 1.125rem;"
+      >
+        Sistema de Diseño Arquitectónico Digital
+      </p>
+    </header>
+
+    <!-- Color Palette -->
+    <section style="margin-bottom: var(--spacing-3xl);">
+      <h2 style="margin-bottom: var(--spacing-lg);">Paleta Cromática</h2>
+      <p
+        class="font-sans text-max"
+        style="margin-bottom: var(--spacing-md); color: var(--color-muted);"
+      >
+        Materiales arquitectónicos traducidos a valores digitales
+      </p>
+
+      <div class="grid-archon grid-archon-2" style="gap: var(--spacing-md);">
+        <div
+          style="padding: var(--spacing-lg); background-color: var(--color-stone-light); border: 1px solid var(--color-border);"
+        >
+          <code class="font-mono" style="color: var(--color-stone-dark);"
+            >stone-light</code
+          >
+          <p
+            class="font-mono"
+            style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--color-muted);"
+          >
+            #e7e5e1
+          </p>
+          <p class="font-sans" style="font-size: 0.875rem; margin-top: 0.5rem;">
+            Fondos
+          </p>
+        </div>
+
+        <div
+          style="padding: var(--spacing-lg); background-color: var(--color-stone-dark);"
+        >
+          <code class="font-mono" style="color: var(--color-stone-light);"
+            >stone-dark</code
+          >
+          <p
+            class="font-mono"
+            style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--color-iron-gray);"
+          >
+            #2f2f2d
+          </p>
+          <p
+            class="font-sans"
+            style="font-size: 0.875rem; margin-top: 0.5rem; color: var(--color-stone-light);"
+          >
+            Texto principal
+          </p>
+        </div>
+
+        <div
+          style="padding: var(--spacing-lg); background-color: var(--color-iron-gray);"
+        >
+          <code class="font-mono" style="color: var(--color-stone-light);"
+            >iron-gray</code
+          >
+          <p
+            class="font-mono"
+            style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--color-stone-light);"
+          >
+            #6b6e6a
+          </p>
+          <p
+            class="font-sans"
+            style="font-size: 0.875rem; margin-top: 0.5rem; color: var(--color-stone-light);"
+          >
+            Metadatos / Grillas
+          </p>
+        </div>
+
+        <div
+          style="padding: var(--spacing-lg); background-color: var(--color-oxide-accent);"
+        >
+          <code class="font-mono" style="color: var(--color-stone-light);"
+            >oxide-accent</code
+          >
+          <p
+            class="font-mono"
+            style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--color-stone-light);"
+          >
+            #8c4a32
+          </p>
+          <p
+            class="font-sans"
+            style="font-size: 0.875rem; margin-top: 0.5rem; color: var(--color-stone-light);"
+          >
+            Acentos mínimos
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section style="margin-bottom: var(--spacing-3xl);">
+      <h2 style="margin-bottom: var(--spacing-lg);">Tipografía</h2>
+      <p
+        class="font-sans text-max"
+        style="margin-bottom: var(--spacing-md); color: var(--color-muted);"
+      >
+        Jerarquía editorial con tres familias distintas
+      </p>
+
+      <div style="margin-bottom: var(--spacing-xl);">
+        <p
+          class="font-mono"
+          style="font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--color-muted);"
+        >
+          Libre Baskerville — Serif Principal
+        </p>
+        <h1 class="font-serif my-10" style="margin-bottom: 1rem;">
+          ARCHÓN construye estructuras digitales
+        </h1>
+        <p class="font-serif text-max">
+          La arquitectura es el juego sabio, correcto y magnífico de los
+          volúmenes bajo la luz. Nosotros traducimos estos principios al espacio
+          digital.
+        </p>
+      </div>
+
+      <div style="margin-bottom: var(--spacing-xl);">
+        <p
+          class="font-mono"
+          style="font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--color-muted);"
+        >
+          Inter — Sans Secundaria (UI)
+        </p>
+        <p
+          class="font-sans"
+          style="font-size: 1.125rem; margin-bottom: 1rem; font-weight: 600;"
+        >
+          Navegación / Botones / Elementos de Interface
+        </p>
+        <p class="font-sans text-max">
+          Tipografía neutral y moderna para elementos funcionales. Invisible
+          pero efectiva.
+        </p>
+      </div>
+
+      <div>
+        <p
+          class="font-mono"
+          style="font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--color-muted);"
+        >
+          JetBrains Mono — Monospace (Metadata)
+        </p>
+        <code
+          class="font-mono"
+          style="font-size: 1rem; display: block; margin-bottom: 0.5rem;"
+        >
+          2026.01.28 — ARCHON.SYSTEM.V1
+        </code>
+        <p class="font-mono" style="font-size: 0.875rem;">
+          Fechas / Códigos / Índices / Información técnica
+        </p>
+      </div>
+    </section>
+
+    <!-- Spacing System -->
+    <section style="margin-bottom: var(--spacing-3xl);">
+      <h2 style="margin-bottom: var(--spacing-lg);">Sistema de Espaciado</h2>
+      <p
+        class="font-sans text-max"
+        style="margin-bottom: var(--spacing-md); color: var(--color-muted);"
+      >
+        Base de 8px con escala coherente
+      </p>
+
+      <div
+        style="border-left: 2px solid var(--color-border); padding-left: var(--spacing-md);"
+      >
+        <div style="margin-bottom: var(--spacing-sm);">
+          <code class="font-mono">--spacing-xs</code>
+          <span
+            class="font-mono"
+            style="margin-left: 1rem; color: var(--color-muted);">16px</span
+          >
+        </div>
+        <div style="margin-bottom: var(--spacing-sm);">
+          <code class="font-mono">--spacing-sm</code>
+          <span
+            class="font-mono"
+            style="margin-left: 1rem; color: var(--color-muted);">24px</span
+          >
+        </div>
+        <div style="margin-bottom: var(--spacing-sm);">
+          <code class="font-mono">--spacing-md</code>
+          <span
+            class="font-mono"
+            style="margin-left: 1rem; color: var(--color-muted);">32px</span
+          >
+        </div>
+        <div style="margin-bottom: var(--spacing-sm);">
+          <code class="font-mono">--spacing-lg</code>
+          <span
+            class="font-mono"
+            style="margin-left: 1rem; color: var(--color-muted);">48px</span
+          >
+        </div>
+        <div style="margin-bottom: var(--spacing-sm);">
+          <code class="font-mono">--spacing-xl</code>
+          <span
+            class="font-mono"
+            style="margin-left: 1rem; color: var(--color-muted);">64px</span
+          >
+        </div>
+        <div style="margin-bottom: var(--spacing-sm);">
+          <code class="font-mono">--spacing-2xl</code>
+          <span
+            class="font-mono"
+            style="margin-left: 1rem; color: var(--color-muted);">96px</span
+          >
+        </div>
+        <div>
+          <code class="font-mono">--spacing-3xl</code>
+          <span
+            class="font-mono"
+            style="margin-left: 1rem; color: var(--color-muted);">128px</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Elements -->
+    <section style="margin-bottom: var(--spacing-3xl);">
+      <h2 style="margin-bottom: var(--spacing-lg);">Elementos Interactivos</h2>
+      <p
+        class="font-sans text-max"
+        style="margin-bottom: var(--spacing-md); color: var(--color-muted);"
+      >
+        Movimiento lento, preciso y significativo
+      </p>
+
+      <div class="grid-archon" style="gap: var(--spacing-lg);">
+        <!-- Link with hover -->
+        <div>
+          <p
+            class="font-mono"
+            style="font-size: 0.75rem; margin-bottom: 0.5rem; color: var(--color-muted);"
+          >
+            HOVER: Link Accent
+          </p>
+          <a
+            href="#"
+            class="hover-accent"
+            style="font-size: 1.125rem; font-weight: 600;"
+          >
+            Ver Proyectos →
+          </a>
+        </div>
+
+        <!-- Button Primary -->
+        <div>
+          <p
+            class="font-mono"
+            style="font-size: 0.75rem; margin-bottom: 0.5rem; color: var(--color-muted);"
+          >
+            BUTTON: Primary
+          </p>
+          <button
+            class="font-sans"
+            style="
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background-color: var(--color-stone-dark);
+            color: var(--color-stone-light);
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+          "
+          >
+            Iniciar Proyecto
+          </button>
+        </div>
+
+        <!-- Button Outline -->
+        <div>
+          <p
+            class="font-mono"
+            style="font-size: 0.75rem; margin-bottom: 0.5rem; color: var(--color-muted);"
+          >
+            BUTTON: Outline
+          </p>
+          <button
+            class="font-sans hover-elevate"
+            style="
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: 1px solid var(--color-border);
+            color: var(--color-foreground);
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+          "
+          >
+            Contacto
+          </button>
+        </div>
+
+        <!-- Input Field -->
+        <div>
+          <p
+            class="font-mono"
+            style="font-size: 0.75rem; margin-bottom: 0.5rem; color: var(--color-muted);"
+          >
+            INPUT: Text Field
+          </p>
+          <input
+            type="text"
+            placeholder="nombre@email.com"
+            style="
+              width: 100%;
+              padding: var(--spacing-sm);
+              font-size: 1rem;
+            "
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid System -->
+    <section>
+      <h2 style="margin-bottom: var(--spacing-lg);">Sistema de Grilla</h2>
+      <p
+        class="font-sans text-max"
+        style="margin-bottom: var(--spacing-md); color: var(--color-muted);"
+      >
+        Estructura editorial con 2-3 columnas
+      </p>
+
+      <div class="grid-archon grid-archon-3">
+        <div
+          style="padding: var(--spacing-lg); border: 1px solid var(--color-border);"
+        >
+          <h3 style="margin-bottom: var(--spacing-sm); font-size: 1.25rem;">
+            Columna 01
+          </h3>
+          <p
+            class="font-sans"
+            style="color: var(--color-muted); font-size: 0.875rem;"
+          >
+            Contenido editorial distribuido en grilla arquitectónica
+          </p>
+        </div>
+        <div
+          style="padding: var(--spacing-lg); border: 1px solid var(--color-border);"
+        >
+          <h3 style="margin-bottom: var(--spacing-sm); font-size: 1.25rem;">
+            Columna 02
+          </h3>
+          <p
+            class="font-sans"
+            style="color: var(--color-muted); font-size: 0.875rem;"
+          >
+            Gap consistente basado en sistema de espaciado
+          </p>
+        </div>
+        <div
+          style="padding: var(--spacing-lg); border: 1px solid var(--color-border);"
+        >
+          <h3 style="margin-bottom: var(--spacing-sm); font-size: 1.25rem;">
+            Columna 03
+          </h3>
+          <p
+            class="font-sans"
+            style="color: var(--color-muted); font-size: 0.875rem;"
+          >
+            Proporción y ritmo visual coherente
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Metadata -->
+    <footer
+      style="margin-top: var(--spacing-3xl); padding-top: var(--spacing-xl); border-top: 1px solid var(--color-border);"
+    >
+      <p
+        class="font-mono"
+        style="font-size: 0.75rem; color: var(--color-muted);"
+      >
+        ARCHÓN.DESIGN.SYSTEM — v1.0.0 — 2026.01.28
+      </p>
+    </footer>
+  </div>
+</Layout>

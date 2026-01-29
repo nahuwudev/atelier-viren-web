@@ -1,0 +1,42 @@
+---
+/**
+ * SmoothScroll — Lenis Integration
+ *
+ * Smooth scrolling con configuración "glacial" para ATELIER VIREN.
+ * Easing suave y natural que complementa las animaciones del sitio.
+ */
+---
+
+<script>
+  import Lenis from "@studio-freight/lenis";
+
+  // Configuración optimizada para estética institucional
+  const lenis = new Lenis({
+    duration: 1.4, // Duración glacial (1.4s = más lento que default)
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // ExpoOut suave
+    orientation: "vertical",
+    gestureOrientation: "vertical",
+    smoothWheel: true,
+    wheelMultiplier: 1.0, // Velocidad normal de wheel
+    touchMultiplier: 2,
+    infinite: false,
+  });
+
+  // Exponer Lenis globalmente para que otros componentes puedan usarlo
+  if (typeof window !== "undefined") {
+    (window as any).lenis = lenis;
+  }
+
+  // RAF loop para Lenis
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  // Debug (opcional - remover en producción)
+  if (import.meta.env.DEV) {
+    console.log("🎯 Lenis Smooth Scroll initialized");
+  }
+</script>

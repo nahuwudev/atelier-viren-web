@@ -1,0 +1,210 @@
+---
+/**
+ * Philosophy — Filosofía del Estudio
+ *
+ * Manifiesto sobre criterios y principios de intervención.
+ * Tono académico/reflexivo.
+ */
+---
+
+<section class="philosophy-section section-spacing">
+  <div id="filosofia" class="container-archon">
+    <!-- Título de Sección -->
+    <h2 class="section-title font-serif">Filosofía de Intervención</h2>
+
+    <!-- Grid Editorial -->
+    <div class="philosophy-grid">
+      <!-- Columna 1: Texto Principal -->
+      <div class="philosophy-text">
+        <p class="philosophy-lead font-serif">
+          El patrimonio arquitectónico no es un objeto museístico congelado en
+          el pasado, sino un documento vivo que continúa acumulando historia.
+        </p>
+
+        <p class="font-serif">
+          Nuestra labor no consiste en devolver el edificio a un supuesto estado
+          original idealizado. Cada intervención es un acto de interpretación
+          crítica donde documentación exhaustiva, rigor técnico y sensibilidad
+          histórica convergen en soluciones específicas.
+        </p>
+
+        <p class="font-serif">
+          Adoptamos el principio de <em>mínima intervención</em> y <em
+            >máxima reversibilidad</em
+          >: solo intervenimos lo estrictamente necesario para garantizar la
+          permanencia del bien, y nuestras acciones pueden ser revertidas por
+          generaciones futuras si nuevos conocimientos así lo demandan.
+        </p>
+      </div>
+
+      <!-- Columna 2: Principios -->
+      <div class="philosophy-principles">
+        <h3 class="principles-title font-sans">Principios Rectores</h3>
+
+        <ul class="principles-list">
+          <li class="principle-item">
+            <span class="principle-number font-mono">01</span>
+            <div class="principle-content">
+              <h4 class="principle-name font-sans">Autenticidad Material</h4>
+              <p class="principle-desc font-serif">
+                Respeto a la materialidad original del edificio como documento
+                histórico.
+              </p>
+            </div>
+          </li>
+
+          <li class="principle-item">
+            <span class="principle-number font-mono">02</span>
+            <div class="principle-content">
+              <h4 class="principle-name font-sans">Distinguibilidad</h4>
+              <p class="principle-desc font-serif">
+                Las intervenciones contemporáneas son identificables pero
+                visualmente integradas.
+              </p>
+            </div>
+          </li>
+
+          <li class="principle-item">
+            <span class="principle-number font-mono">03</span>
+            <div class="principle-content">
+              <h4 class="principle-name font-sans">Reversibilidad</h4>
+              <p class="principle-desc font-serif">
+                Nuestras acciones pueden ser revertidas sin afectar el original.
+              </p>
+            </div>
+          </li>
+
+          <li class="principle-item">
+            <span class="principle-number font-mono">04</span>
+            <div class="principle-content">
+              <h4 class="principle-name font-sans">Documentación</h4>
+              <p class="principle-desc font-serif">
+                Registro exhaustivo de estados, procesos y decisiones técnicas.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .philosophy-section {
+    background-color: var(--color-background);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-foreground);
+    margin-bottom: var(--spacing-2xl);
+    letter-spacing: -0.01em;
+  }
+
+  /* Philosophy Grid */
+  .philosophy-grid {
+    display: grid;
+    gap: var(--spacing-3xl);
+  }
+
+  @media (min-width: 768px) {
+    .philosophy-grid {
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--spacing-3xl);
+    }
+  }
+
+  /* Texto Principal */
+  .philosophy-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .philosophy-lead {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    line-height: 1.6;
+    color: var(--color-foreground);
+    font-weight: var(--font-weight-normal);
+  }
+
+  .philosophy-text p {
+    line-height: 1.8;
+    color: var(--color-foreground);
+  }
+
+  .philosophy-text em {
+    font-style: italic;
+    color: var(--color-accent);
+  }
+
+  /* Principios */
+  .philosophy-principles {
+    border-left: 1px solid var(--color-border);
+    padding-left: var(--spacing-xl);
+  }
+
+  .principles-title {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-foreground);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .principles-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .principle-item {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .principle-number {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .principle-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .principle-name {
+    font-size: 1rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-foreground);
+  }
+
+  .principle-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .section-title {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .philosophy-grid {
+      gap: var(--spacing-2xl);
+    }
+
+    .philosophy-principles {
+      border-left: none;
+      border-top: 1px solid var(--color-border);
+      padding-left: 0;
+      padding-top: var(--spacing-xl);
+    }
+  }
+</style>
