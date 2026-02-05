@@ -8,7 +8,7 @@ Sitio web institucional para estudio de restauración y conservación del patrim
 
 ## 🏛️ Características
 
-- **Sistema de diseño ARCHÓN** — Jerarquía tipográfica editorial (Serif/Sans/Mono)
+- **Sistema de diseño arkeon** — Jerarquía tipográfica editorial (Serif/Sans/Mono)
 - **Estética institucional** — Tono académico/museístico sin elementos comerciales
 - **6 secciones home** — Hero, Sobre Nosotros, Proyectos, Áreas, Filosofía, Contacto
 - **3 proyectos completos** — Monasterio de San Bernardo, Casa Colonial Álvarez, Palacio Municipal
@@ -65,7 +65,7 @@ src/
 │   ├── design-system.astro
 │   └── proyecto/      # Páginas proyectos
 └── styles/
-    └── global.css     # Sistema ARCHÓN
+    └── global.css     # Sistema arkeon
 
 public/images/         # Imágenes estáticas
 ├── monasterio/        # 8 imágenes
@@ -73,7 +73,7 @@ public/images/         # Imágenes estáticas
 └── palacio/          # 8 imágenes
 ```
 
-## 🎨 Sistema de Diseño ARCHÓN
+## 🎨 Sistema de Diseño arkeon
 
 ### Paleta de Colores
 

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ============================================
-   ARCHÓN — Typography Imports
+   arkeon — Typography Imports
    Fontsource: Jerarquía Editorial
    ============================================ */
 @import "@fontsource/libre-baskerville/400.css";
@@ -11,7 +11,7 @@
 @import "@fontsource/jetbrains-mono/400.css";
 
 /* ============================================
-   ARCHÓN Design System
+   arkeon Design System
    Arquitectura Digital — Sistema Fundamental
    ============================================ */
 
@@ -227,7 +227,7 @@
   }
 
   /* Layout Utilities */
-  .container-archon {
+  .container-arkeon {
     width: 100%;
     max-width: var(--max-width-content);
     margin-left: auto;
@@ -237,7 +237,7 @@
   }
 
   @media (min-width: 768px) {
-    .container-archon {
+    .container-arkeon {
       padding-left: var(--margin-page-desktop);
       padding-right: var(--margin-page-desktop);
     }
@@ -291,17 +291,17 @@
   }
 
   /* Grid Architectural */
-  .grid-archon {
+  .grid-arkeon {
     display: grid;
     gap: var(--spacing-lg);
   }
 
   @media (min-width: 768px) {
-    .grid-archon-2 {
+    .grid-arkeon-2 {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .grid-archon-3 {
+    .grid-arkeon-3 {
       grid-template-columns: repeat(3, 1fr);
     }
   }
